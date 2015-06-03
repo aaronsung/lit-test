@@ -1,9 +1,10 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Literature</h1>
+<div class="center jumbotron">
+  <p id="notice"><%= notice %></p>
+  <%= link_to 'Publish New Article', new_article_path ,  class: "btn btn-lg btn-primary" %>
+  <%= link_to 'Sign up', new_editor_path , class: "btn btn-lg btn-primary" %>
 
-<%= link_to 'Publish New Article', new_article_path %>
-<%= link_to 'Sign up', new_editor_path %>
+</div>
 
 <table>
   <thead>
@@ -30,3 +31,4 @@
 </table>
 
 <br>
+
