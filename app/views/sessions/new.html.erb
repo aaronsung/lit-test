@@ -1,0 +1,24 @@
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<% if flash[:alert] %>
+		<p id="notice"><%= flash[:alert] %></p> <% end %>
+		<h1>Login</h1>
+		<%= form_tag do %>
+		<div class="field">
+			<%= label_tag :name, 'Name:' %><br>
+			<%= text_field_tag :name, params[:name] , class: 'form-control' %>
+		</div>
+		<div class="field">
+			<%= label_tag :password, 'Password:' %><br>
+			<%= password_field_tag :password, params[:password] , class: 'form-control'%>
+		</div> 
+		<div class="field">
+		<%= submit_tag "Login", class: "btn btn-lg btn-primary"%> 
+		
+		<%= link_to 'Back', articles_path, class: "btn btn-lg btn-primary"%>
+		</div>
+		<% end %>
+
+	</div>
+</div>
