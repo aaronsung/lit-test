@@ -6,7 +6,10 @@ class ApplicationController < ActionController::Base
 
   protected
   def authorize
-  	unless User.find_by(id: session[:user_id])
-  		redirect_to login_url, notice: "Please log in" end
+  	unless Editor.find_by(id: session[:user_id])
+  		#redirect_to login_url, notice: "Please log in" end
+      flash[:danger] = "Please log in"
+      redirect_to login_url
   	end
   end
+end

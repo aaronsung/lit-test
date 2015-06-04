@@ -7,8 +7,10 @@ class SessionsController < ApplicationController
   	if user and user.authenticate(params[:password])
   		session[:user_id] = user.id
   		#redirect_to admin_url
-  		redirect_to 'articles#index'
+  		redirect_to articles_path
   	else
+      flash.now[:danger] = 'Invalid user/password combination'
+      render 'new'
   		#redirect_to login_url, alert: "Invalid user/password combination" 
   	end
   end
