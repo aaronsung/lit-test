@@ -20,7 +20,11 @@
         <td><%= editor.is_admin %></td>
         <td><%= link_to 'Show', editor %></td>
         <td><%= link_to 'Edit', edit_editor_path(editor) %></td>
-        <td><%= link_to 'Destroy', editor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%if @is_admin%>
+          <%= link_to 'Destroy', editor, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%end%>
+        </td>
       </tr>
     <% end %>
   </tbody>

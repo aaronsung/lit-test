@@ -1,10 +1,12 @@
 class EditorsController < ApplicationController
   before_action :set_editor, only: [:show, :edit, :update, :destroy]
+  before_action :authorize, only:[:index,:edit, :update, :destroy]
 
   # GET /editors
   # GET /editors.json
   def index
     @editors = Editor.all
+    @is_admin = is_admin
   end
 
   # GET /editors/1

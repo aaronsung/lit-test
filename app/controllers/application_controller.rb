@@ -12,4 +12,11 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
   	end
   end
+
+  def is_admin
+    if result = Editor.find_by(id: session[:user_id])
+      return result.is_admin
+    end
+    return false
+  end
 end
