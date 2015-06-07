@@ -15,6 +15,10 @@ class ArticlesController < ApplicationController
     @article.save
   end
 
+  def showown
+    @articles = Article.all
+  end
+
   # GET /articles/new
   def new
     @article = Article.new
