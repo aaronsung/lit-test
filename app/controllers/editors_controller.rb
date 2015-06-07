@@ -25,6 +25,7 @@ class EditorsController < ApplicationController
   # POST /editors.json
   def create
     @editor = Editor.new(editor_params)
+    @editor.is_admin = false
 
     respond_to do |format|
       if @editor.save
