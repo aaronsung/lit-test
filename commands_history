@@ -1,0 +1,9 @@
+rails new lit-test
+rails generate scaffold Editor name:string email:string password:digest is_admin:boolean
+rails generate scaffold Article title:string content:string view_count:integer
+rails g controller Sessions new create destroy
+rake db:drop db:create db:migrate
+git push heroku master
+heroku logs
+heroku run rake db:drop db:create db:migrate
+//http://stackoverflow.com/questions/22815009/add-a-reference-column-migration-in-rails-4
