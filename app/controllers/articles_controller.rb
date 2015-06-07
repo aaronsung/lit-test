@@ -11,6 +11,8 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @article.view_count += 1
+    @article.save
   end
 
   # GET /articles/new
@@ -26,7 +28,7 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(article_params)
-    #@article.
+    @article.view_count = 0
 
     respond_to do |format|
       if @article.save
