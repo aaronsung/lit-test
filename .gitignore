@@ -15,3 +15,8 @@
 /log/*
 !/log/.keep
 /tmp
+
+#ignore CLOUD9 Files
+.c9
+.DS_Store
+Thumbs.db
