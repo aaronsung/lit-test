@@ -20,3 +20,8 @@
 .c9
 .DS_Store
 Thumbs.db
+
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion
+*.iml
+## Directory-based project format:
+.idea/
