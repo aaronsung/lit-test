@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_catalog, only:[:catalog]
   before_action :authorize, only:[:new,:edit, :update, :destroy]
 
   # GET /articles
@@ -7,6 +8,8 @@ class ArticlesController < ApplicationController
   def index
     if params[:search]
       @articles = Article.search(params[:search])
+    elsif params[:catalog]
+         @articles = Article.all
       else
          @articles = Article.all
        end
@@ -73,6 +76,10 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def catalog
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
@@ -82,5 +89,11 @@ class ArticlesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
       params.require(:article).permit(:title, :content, :view_count)
+    end
+
+    #Set Catalog array and constant
+    def set_catalog
+      @catalogs = ['Hot popular','Detective','Science','Horror','Historical','Love']
+      @fiction=' fiction'
     end
 end
