@@ -15,7 +15,9 @@
                     <img src="" alt="" />
                 </div>
                 <div class="content">
-                    <p><a class="btn btn-info btn-lg"><%=catalog + ' ' + @fiction %></a></p>
+                    <p>
+                    <%= link_to catalog + ' ' + @fiction,articles_path(:catalog=>catalog),:class=>'btn btn-info btn-lg'%>
+                    </p>
                     <p><br/><br/></p>
                 </div>
             </div>
