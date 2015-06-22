@@ -94,6 +94,10 @@ class ArticlesController < ApplicationController
     #Set Catalog array and constant
     def set_catalog
       @catalogs = ['Hot popular','Detective','Science','Horror','Historical','Love']
+      @catalogs_group = []
+      @catalogs.each do |catalog|
+        @catalogs_group.add([catalog,catalog])
+      end
       @fiction=' fiction'
     end
 end
