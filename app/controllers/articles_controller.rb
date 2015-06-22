@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_action :set_catalog, only:[:catalog]
+  before_action :set_catalog, only:[:new,:edit,:catalog]
   before_action :authorize, only:[:new,:edit, :update, :destroy]
 
   # GET /articles
@@ -96,7 +96,7 @@ class ArticlesController < ApplicationController
       @catalogs = ['Hot popular','Detective','Science','Horror','Historical','Love']
       @catalogs_group = []
       @catalogs.each do |catalog|
-        @catalogs_group.add([catalog,catalog])
+        @catalogs_group.push([catalog,catalog])
       end
       @fiction=' fiction'
     end
