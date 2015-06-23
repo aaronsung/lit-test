@@ -15,3 +15,13 @@
 /log/*
 !/log/.keep
 /tmp
+
+#ignore CLOUD9 Files
+.c9
+.DS_Store
+Thumbs.db
+
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion
+*.iml
+## Directory-based project format:
+.idea/

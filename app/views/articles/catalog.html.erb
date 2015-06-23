@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <h1>
+         <%=@fiction%>
+        </h1>
+  </div>
+  <% counter=0 %>
+  <% @catalogs.each_slice(3) do |catalogs| %>
+    <div class="row">
+      <% catalogs.each do |catalog| %>
+      <div class="col-sm-4">
+            <div class="card">
+                <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
+                <div class="avatar">
+                    <img src="" alt="" />
+                </div>
+                <div class="content">
+                    <p>
+                    <%= link_to catalog + ' ' + @fiction,articles_path(:catalog=>catalog),:class=>'btn btn-info btn-lg'%>
+                    </p>
+                    <p><br/><br/></p>
+                </div>
+            </div>
+        </div>
+      <%end%>
+      <p>&nbsp;<br/>&nbsp;</p>
+    </div>
+    <%end%>
+
+
+
+
+
+</div>

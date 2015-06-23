@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
   	user = Editor.find_by(name: params[:name])
   	if user and user.authenticate(params[:password])
   		session[:user_id] = user.id
+      session[:user_name] = user.name
   		#redirect_to admin_url
   		redirect_to articles_path
   	else
