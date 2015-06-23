@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_action :set_catalog, only:[:new,:edit,:catalog]
+  before_action :set_catalog, only:[:new,:edit,:update,:catalog]
   before_action :authorize, only:[:new,:edit, :update, :destroy]
 
   # GET /articles
@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
     if params[:search]
       @articles = Article.search(params[:search])
     elsif params[:catalog]
-         @articles = Article.all
+         @articles = Article.search_catalog(params[:catalog])
       else
          @articles = Article.all
        end
@@ -88,16 +88,16 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :content, :view_count)
+      params.require(:article).permit(:title, :content, :view_count, :catalog)
     end
 
     #Set Catalog array and constant
     def set_catalog
       @catalogs = ['Hot popular','Detective','Science','Horror','Historical','Love']
-      @catalogs_group = []
-      @catalogs.each do |catalog|
-        @catalogs_group.push([catalog,catalog])
-      end
+      # @catalogs_group = []
+      # @catalogs.each do |catalog|
+      #   @catalogs_group.push([catalog,catalog])
+      # end
       @fiction=' fiction'
     end
 end
