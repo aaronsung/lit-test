@@ -5,20 +5,12 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <header class="navbar navbar-fixed-top navbar-inverse">
+  <header class="navbar navbar-static-top navbar-inverse">
 	  <div class="container">
-		  <%= link_to "Literature World", articles_path, id: "logo" %>
+		  <img src="http://image.bmediaasia.com/HKGolden/2015/b/fevaworks_20150306_sb_cefweb.jpg" width="600" height="90" alt="fevaworks" id="logo">
 		  <nav>
 			  <ul class="nav navbar-nav navbar-right">
-				  <li><%= link_to "Home",   articles_path %></li>
-				  <% if session[:user_id]!=nil %>
-				  <% if is_admin %>
-				    <li><%= link_to "Manage User", editors_path %></li>
-				  <% end%>
-				    <li><%= link_to "Log out", sessions_destroy_path %></li>
-				  <%else%>
-				    <li><%= link_to "Log in", login_path %></li>
-				  <%end%>
+			  	<li>
 				  <%= form_tag(articles_path,:class => 'nav navbar-form navbar-right' ,:method => "get", id: "search-form") do %>
 				  <div class="input-group">
 					  <%= text_field_tag :search, params[:search], :class=>'form-control', placeholder: "Search" %>
@@ -29,7 +21,15 @@
 					  </div>
 				  </div>
 				  <%end%>
-			  </div>
+				</li>
+				<br>
+				  <% if session[:user_id]!=nil %>
+				    <li><%= link_to session[:user_name], '#' %></li>
+				    <li><%= link_to "Log out", sessions_destroy_path %></li>
+				  <%else%>
+				    <li><%= link_to 'Visitor', '#' %></li>
+				    <li><%= link_to "Log in", login_path %></li>
+				  <%end%>				  
 		  </ul>
 
 	  </nav>
@@ -47,11 +47,11 @@
 <%= yield %>
 <footer class="footer">
 	<small>
-		Literature World 2015
+		<%= link_to "Literature World 2015",   articles_path %>	
 	</small>
 	  <nav>
     <ul>
-      <li><%= link_to ".",   '#' %></li>
+      <li><%= link_to 'Sign up', new_editor_path%></li>
     </ul>
   </nav>
 </footer>

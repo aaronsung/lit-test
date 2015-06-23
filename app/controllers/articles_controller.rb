@@ -40,10 +40,12 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.view_count = 0
+    @article.editor_id = session[:user_id]
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.html { redirect_to @article}
+        #, notice: 'Article was successfully created.' 
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }
@@ -57,7 +59,8 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.html { redirect_to @article }
+        #, notice: 'Article was successfully updated.'
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit }
@@ -71,7 +74,8 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     respond_to do |format|
-      format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
+      format.html { redirect_to articles_url }
+      #, notice: 'Article was successfully destroyed.'
       format.json { head :no_content }
     end
   end
