@@ -20,6 +20,8 @@ class ArticlesController < ApplicationController
   def show
     @article.view_count += 1
     @article.save
+    yomu = Yomu.new @article.upload
+    @content = yomu.text
   end
 
   def showown
@@ -29,6 +31,7 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   def new
     @article = Article.new
+    @articles = Article.all
   end
 
   # GET /articles/1/edit
@@ -84,6 +87,9 @@ class ArticlesController < ApplicationController
 
   end
 
+  def upload
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
@@ -92,7 +98,7 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :content, :view_count, :catalog)
+      params.require(:article).permit(:title, :content, :view_count, :catalog, :upload)
     end
 
     #Set Catalog array and constant
