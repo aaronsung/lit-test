@@ -1,11 +1,11 @@
 <table>
   <thead>
     <tr>
-      <th width='30%'>Story Name</th>
-      <th width='30%'>Author</th>
+      <th width='55%'>Story Name</th>
+      <th width='15%'>Author</th>
       <th width='25%'>Last Update</th>
-      <th width='15%'>Hit Rate</th>
-      <th width='15%'><%= link_to 'Publish New Article', new_article_path ,  class: "btn btn-primary" %></th>
+      <th width='10%'>Hit Rate</th>
+      <th width='20%'></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,12 +15,14 @@
       <tr>
         <td><%= article.title %></td>
         <td><%= article.editor.name %></td>
-        <td><%= article.updated_at %></td>
+        <td><%= article.updated_at.to_date %></td>
         <td><%= article.view_count %></td>
         <td><%= link_to 'View', article %></td>
         <td>
           <% if session[:user_id]!=nil %>
-          <%= link_to 'Upload', edit_article_path(article) %></td>
+            <% if article.editor.name==session[:user_name] %>
+              <%= link_to 'Upload', edit_article_path(article) %></td>
+            <%end%>
           <%end%>
         <td>
           <% if is_admin %>
