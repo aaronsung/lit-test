@@ -20,7 +20,9 @@
         <td><%= link_to 'View', article %></td>
         <td>
           <% if session[:user_id]!=nil %>
-          <%= link_to 'Upload', edit_article_path(article) %></td>
+            <% if article.editor.name==session[:user_name] %>
+              <%= link_to 'Upload', edit_article_path(article) %></td>
+            <%end%>
           <%end%>
         <td>
           <% if is_admin %>
