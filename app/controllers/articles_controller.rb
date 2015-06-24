@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_action :set_catalog, only:[:new,:edit,:update,:catalog]
+  before_action :set_catalog, only:[:index,:new,:edit,:update,:catalog]
   before_action :authorize, only:[:new,:edit, :update, :destroy]
 
   # GET /articles
@@ -79,7 +79,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     respond_to do |format|
-      format.html { redirect_to articles_url }
+      format.html { redirect_to action:'catalog' }
       #, notice: 'Article was successfully destroyed.'
       format.json { head :no_content }
     end
