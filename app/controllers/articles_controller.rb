@@ -20,6 +20,8 @@ class ArticlesController < ApplicationController
   def show
     @article.view_count += 1
     @article.save
+    yomu = Yomu.new @article.upload
+    @content = yomu.text
   end
 
   def showown
