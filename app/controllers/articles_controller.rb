@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_action :set_catalog, only:[:new,:edit,:update,:catalog]
+  before_action :set_catalog, only:[:index,:new,:edit,:update,:catalog]
   before_action :authorize, only:[:new,:edit, :update, :destroy]
 
   # GET /articles
