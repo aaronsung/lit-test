@@ -20,8 +20,6 @@ class ArticlesController < ApplicationController
   def show
     @article.view_count += 1
     @article.save
-    yomu = Yomu.new @article.upload
-    @content = yomu.text
   end
 
   def showown
@@ -44,6 +42,8 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.view_count = 0
     @article.editor_id = session[:user_id]
+    yomu = Yomu.new @article.upload
+    @article.content = yomu.text
 
     respond_to do |format|
       if @article.save
