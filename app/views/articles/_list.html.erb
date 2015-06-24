@@ -15,7 +15,7 @@
       <tr>
         <td><%= article.title %></td>
         <td><%= article.editor.name %></td>
-        <td><%= article.updated_at %></td>
+        <td><%= article.updated_at.to_date %></td>
         <td><%= article.view_count %></td>
         <td><%= link_to 'View', article %></td>
         <td>
