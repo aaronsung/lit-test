@@ -7,3 +7,16 @@
 <p>
   <%= @article.content %>
 </p>
+
+<p>Comments:</p>
+<% @article.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.editor %>
+  </p>
+ 
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
