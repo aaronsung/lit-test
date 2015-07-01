@@ -7,3 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Editor.create(name: 'admin',email:'admin', password: 'admin',is_admin: true)
+Editor.create(name: 'tester',email:'tester', password: 'tester',is_admin: false)
