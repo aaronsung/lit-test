@@ -18,8 +18,10 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    #increase view count by one
     @article.view_count += 1
     @article.save
+    #Load the content from the uploaded file
     yomu = Yomu.new @article.upload
     @content = yomu.text
   end
@@ -41,6 +43,7 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
+    #create a new story
     @article = Article.new(article_params)
     @article.view_count = 0
     @article.editor_id = session[:user_id]
@@ -62,6 +65,7 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
+    #Edit a story
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to @article }
@@ -106,10 +110,6 @@ class ArticlesController < ApplicationController
     #Set Catalog array and constant
     def set_catalog
       @catalogs = ['Hot popular','Detective','Science','Horror','Historical','Love']
-      # @catalogs_group = []
-      # @catalogs.each do |catalog|
-      #   @catalogs_group.push([catalog,catalog])
-      # end
       @fiction=' fiction'
     end
 end

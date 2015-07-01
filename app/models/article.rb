@@ -1,5 +1,6 @@
 class Article < ActiveRecord::Base
   belongs_to :editor
+  has_many :comments
   mount_uploader :upload, DocumentUploader
   
   def self.search(query)

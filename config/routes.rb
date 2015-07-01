@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   get 'sessions/destroy'
 
-  resources :articles
+  resources :articles do
+    resources :comments
+  end
 
   resources :editors
 
