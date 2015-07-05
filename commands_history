@@ -1,5 +1,8 @@
 rails s -p $PORT -b $IP
 
+https://lit-test-aaronsung.c9.io/
+https://limitless-headland-6973.herokuapp.com/
+
 rails new lit-test
 rails generate scaffold Editor name:string email:string password:digest is_admin:boolean
 rails generate scaffold Article title:string content:string view_count:integer
