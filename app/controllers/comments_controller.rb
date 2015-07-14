@@ -2,7 +2,11 @@ class CommentsController < ApplicationController
     def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.new(comment_params)
-    @comment.editor = session[:user_name]
+    editor = 'Visitor'
+    if session[:user_name] != nil
+      editor = session[:user_name]
+    end
+    @comment.editor = editor
     @comment.save
     redirect_to article_path(@article)
   end
