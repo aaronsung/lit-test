@@ -2,7 +2,7 @@ class Article < ActiveRecord::Base
   belongs_to :editor
   has_many :comments
   mount_uploader :upload, DocumentUploader
-  validates :title, uniqueness: true 
+  validates :title, uniqueness: { message: ": The same Article title has been used before" }
   
   
   def self.search(query)
