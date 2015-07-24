@@ -31,7 +31,10 @@ class EditorsController < ApplicationController
 
     respond_to do |format|
       if @editor.save
-        format.html { redirect_to @editor, notice: 'Editor was successfully created.' }
+        format.html { 
+          flash[:success] = 'Sign Up successfully!' 
+          redirect_to login_path
+        }
         format.json { render :show, status: :created, location: @editor }
       else
         format.html { render :new }
